@@ -350,3 +350,4 @@ class SellerCardCompact extends StatelessWidget {
   }
 }
 
+
