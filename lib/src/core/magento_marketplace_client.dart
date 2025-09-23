@@ -205,7 +205,7 @@ class MagentoMarketplaceClient {
 
     String message = 'HTTP Error $statusCode';
     if (data is Map<String, dynamic>) {
-      message = data['message'] ?? data['error'] ?? message;
+      message = (data['message'] ?? data['error'] ?? message).toString();
     }
 
     switch (statusCode) {

@@ -3,11 +3,6 @@ import 'package:flutter_magento/flutter_magento.dart';
 import 'package:flutter_magento_marketplace/src/core/magento_marketplace_client.dart';
 import 'package:flutter_magento_marketplace/src/core/marketplace_config.dart';
 import 'package:flutter_magento_marketplace/src/services/seller_service.dart';
-import 'package:flutter_magento_marketplace/src/services/product_service.dart';
-import 'package:flutter_magento_marketplace/src/services/review_service.dart';
-import 'package:flutter_magento_marketplace/src/services/message_service.dart';
-import 'package:flutter_magento_marketplace/src/services/commission_service.dart';
-import 'package:flutter_magento_marketplace/src/services/subdomain_service.dart';
 
 /// Provider for marketplace configuration
 final marketplaceConfigProvider = Provider<MarketplaceConfig>((ref) {
@@ -15,8 +10,8 @@ final marketplaceConfigProvider = Provider<MarketplaceConfig>((ref) {
 });
 
 /// Provider for Magento client
-final magentoClientProvider = Provider<MagentoClient>((ref) {
-  throw UnimplementedError('MagentoClient must be provided');
+final magentoClientProvider = Provider<FlutterMagentoCore>((ref) {
+  throw UnimplementedError('FlutterMagentoCore must be provided');
 });
 
 /// Provider for marketplace client
@@ -24,7 +19,7 @@ final marketplaceClientProvider = Provider<MagentoMarketplaceClient>((ref) {
   final config = ref.watch(marketplaceConfigProvider);
   final magentoClient = ref.watch(magentoClientProvider);
 
-  return MagentoMarketplaceClient(config: config, magentoClient: magentoClient);
+  return MagentoMarketplaceClient(config: config, magentoCore: magentoClient);
 });
 
 /// Provider for seller service
@@ -33,35 +28,6 @@ final sellerServiceProvider = Provider<SellerService>((ref) {
   return SellerService(client);
 });
 
-/// Provider for product service
-final productServiceProvider = Provider<ProductService>((ref) {
-  final client = ref.watch(marketplaceClientProvider);
-  return ProductService(client);
-});
-
-/// Provider for review service
-final reviewServiceProvider = Provider<ReviewService>((ref) {
-  final client = ref.watch(marketplaceClientProvider);
-  return ReviewService(client);
-});
-
-/// Provider for message service
-final messageServiceProvider = Provider<MessageService>((ref) {
-  final client = ref.watch(marketplaceClientProvider);
-  return MessageService(client);
-});
-
-/// Provider for commission service
-final commissionServiceProvider = Provider<CommissionService>((ref) {
-  final client = ref.watch(marketplaceClientProvider);
-  return CommissionService(client);
-});
-
-/// Provider for subdomain service
-final subdomainServiceProvider = Provider<SubdomainService>((ref) {
-  final client = ref.watch(marketplaceClientProvider);
-  return SubdomainService(client);
-});
 
 /// Provider for marketplace initialization
 final marketplaceInitializationProvider = FutureProvider<bool>((ref) async {
