@@ -161,7 +161,7 @@ class SellerService {
         queryParameters: {'limit': limit},
       );
       return (response.data as List)
-          .map((json) => Seller.fromJson(json))
+          .map((json) => Seller.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
       throw SellerException('Failed to get featured sellers: $e', error: e);
@@ -176,7 +176,7 @@ class SellerService {
         queryParameters: {'limit': limit},
       );
       return (response.data as List)
-          .map((json) => Seller.fromJson(json))
+          .map((json) => Seller.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
       throw SellerException('Failed to get premium sellers: $e', error: e);
@@ -201,7 +201,7 @@ class SellerService {
         },
       );
       return (response.data as List)
-          .map((json) => Seller.fromJson(json))
+          .map((json) => Seller.fromJson(json as Map<String, dynamic>))
           .toList();
     } catch (e) {
       throw SellerException(
@@ -264,7 +264,7 @@ class SellerSearchResult {
   factory SellerSearchResult.fromJson(Map<String, dynamic> json) {
     return SellerSearchResult(
       items: (json['items'] as List)
-          .map((item) => Seller.fromJson(item))
+          .map((item) => Seller.fromJson(item as Map<String, dynamic>))
           .toList(),
       totalCount: json['total_count'] as int,
       pageSize: json['page_size'] as int,

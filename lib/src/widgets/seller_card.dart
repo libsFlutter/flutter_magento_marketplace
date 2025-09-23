@@ -349,5 +349,3 @@ class SellerCardCompact extends StatelessWidget {
     );
   }
 }
-
-
