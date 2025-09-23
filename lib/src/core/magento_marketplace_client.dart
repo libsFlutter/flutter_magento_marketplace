@@ -8,26 +8,26 @@ import 'marketplace_exceptions.dart';
 class MagentoMarketplaceClient {
   static MagentoMarketplaceClient? _instance;
   late final Dio _dio;
-  late final MagentoClient _magentoClient;
+  late final FlutterMagentoCore _magentoCore;
   late final MarketplaceConfig _config;
 
   MagentoMarketplaceClient._({
     required MarketplaceConfig config,
-    required MagentoClient magentoClient,
+    required FlutterMagentoCore magentoCore,
   }) {
     _config = config;
-    _magentoClient = magentoClient;
+    _magentoCore = magentoCore;
     _dio = _createDio();
   }
 
   /// Factory constructor to create singleton instance
   factory MagentoMarketplaceClient({
     required MarketplaceConfig config,
-    required MagentoClient magentoClient,
+    required FlutterMagentoCore magentoCore,
   }) {
     _instance ??= MagentoMarketplaceClient._(
       config: config,
-      magentoClient: magentoClient,
+      magentoCore: magentoCore,
     );
     return _instance!;
   }
@@ -35,7 +35,7 @@ class MagentoMarketplaceClient {
   /// Get singleton instance
   static MagentoMarketplaceClient get instance {
     if (_instance == null) {
-      throw MarketplaceException(
+      throw MarketplaceTimeoutException(
         'MagentoMarketplaceClient not initialized. Call create() first.',
       );
     }
@@ -62,7 +62,7 @@ class MagentoMarketplaceClient {
 
     // Interceptors
     dio.interceptors.addAll([
-      _AuthInterceptor(_magentoClient),
+      _AuthInterceptor(_magentoCore),
       _LoggingInterceptor(_config.enableLogging),
       _ErrorInterceptor(),
     ]);
@@ -74,7 +74,7 @@ class MagentoMarketplaceClient {
   Dio get dio => _dio;
 
   /// Get underlying Magento client
-  MagentoClient get magentoClient => _magentoClient;
+  FlutterMagentoCore get magentoCore => _magentoCore;
 
   /// Get marketplace configuration
   MarketplaceConfig get config => _config;
@@ -189,13 +189,13 @@ class MagentoMarketplaceClient {
             error: error,
           );
         default:
-          return MarketplaceException(
+          return MarketplaceTimeoutException(
             'Unknown error: ${error.message}',
             error: error,
           );
       }
     }
-    return MarketplaceException('Unexpected error: $error', error: error);
+    return MarketplaceTimeoutException('Unexpected error: $error', error: error);
   }
 
   /// Handle HTTP response errors
@@ -224,7 +224,7 @@ class MagentoMarketplaceClient {
       case 500:
         return MarketplaceServerException(message, error: error);
       default:
-        return MarketplaceException(message, error: error);
+        return MarketplaceTimeoutException(message, error: error);
     }
   }
 
@@ -236,14 +236,14 @@ class MagentoMarketplaceClient {
 
 /// Authentication interceptor
 class _AuthInterceptor extends Interceptor {
-  final MagentoClient _magentoClient;
+  final FlutterMagentoCore _magentoCore;
 
-  _AuthInterceptor(this._magentoClient);
+  _AuthInterceptor(this._magentoCore);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     // Add authentication token if available
-    final token = _magentoClient.getAuthToken();
+    final token = _magentoCore.authService.customerToken;
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
