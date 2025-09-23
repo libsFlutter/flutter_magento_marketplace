@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_magento_marketplace/src/providers/marketplace_providers.dart';
 import 'package:flutter_magento_marketplace/src/widgets/seller_card.dart';
-import 'package:flutter_magento_marketplace/src/widgets/product_grid.dart';
 import 'package:flutter_magento_marketplace/src/models/seller.dart';
-import 'package:flutter_magento_marketplace/src/services/seller_service.dart';
-import 'package:flutter_magento_marketplace/src/utils/marketplace_utils.dart';
 
 /// Main marketplace home screen
 class MarketplaceHomeScreen extends ConsumerStatefulWidget {
@@ -254,8 +251,8 @@ class _MarketplaceHomeScreenState extends ConsumerState<MarketplaceHomeScreen>
   Widget _buildRecentProducts(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.all(16),
-      child: ProductGrid(
-        // Pass product data here
+      child: Center(
+        child: Text('Recent products will be displayed here'),
       ),
     );
   }
