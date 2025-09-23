@@ -1,0 +1,66 @@
+name: flutter_magento_marketplace
+description: Flutter library for Magento 2 Marketplace functionality with multi-seller support, subdomains, ratings, and messaging
+version: 1.0.0
+homepage: https://github.com/nativemind/flutter_magento_marketplace
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Core dependencies
+  flutter_magento: ^2.3.4
+  dio: ^5.3.2
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  equatable: ^2.0.5
+  
+  # State management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  
+  # Local storage
+  shared_preferences: ^2.2.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
+  # Image handling
+  cached_network_image: ^3.3.0
+  image_picker: ^1.0.4
+  
+  # UI components
+  flutter_staggered_grid_view: ^0.7.0
+  pull_to_refresh: ^2.0.0
+  shimmer: ^3.0.0
+  
+  # Utilities
+  intl: ^0.20.2
+  url_launcher: ^6.2.1
+  package_info_plus: ^4.2.0
+  device_info_plus: ^9.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Code generation
+  build_runner: ^2.4.7
+  freezed: ^2.4.6
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.9
+  
+  # Linting
+  flutter_lints: ^3.0.1
+  very_good_analysis: ^5.1.0
+  
+  # Testing
+  mockito: ^5.4.4
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
