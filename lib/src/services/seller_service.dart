@@ -29,7 +29,7 @@ class SellerService {
         queryParameters: queryParams,
       );
 
-      return SellerSearchResult.fromJson(response.data);
+      return SellerSearchResult.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to get sellers: $e', error: e);
     }
@@ -39,7 +39,7 @@ class SellerService {
   Future<Seller> getSeller(int sellerId) async {
     try {
       final response = await _client.get('/sellers/$sellerId');
-      return Seller.fromJson(response.data);
+      return Seller.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to get seller: $e', error: e);
     }
@@ -49,7 +49,7 @@ class SellerService {
   Future<Seller> getSellerBySubdomain(String subdomain) async {
     try {
       final response = await _client.get('/sellers/subdomain/$subdomain');
-      return Seller.fromJson(response.data);
+      return Seller.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to get seller by subdomain: $e', error: e);
     }
@@ -59,7 +59,7 @@ class SellerService {
   Future<Seller?> getSellerByCustomerId(int customerId) async {
     try {
       final response = await _client.get('/sellers/customer/$customerId');
-      return Seller.fromJson(response.data);
+      return Seller.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       if (e is MarketplaceNotFoundException) {
         return null;
@@ -78,7 +78,7 @@ class SellerService {
         '/sellers/register',
         data: request.toJson(),
       );
-      return Seller.fromJson(response.data);
+      return Seller.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to register seller: $e', error: e);
     }
@@ -91,7 +91,7 @@ class SellerService {
         '/sellers/${request.sellerId}',
         data: request.toJson(),
       );
-      return Seller.fromJson(response.data);
+      return Seller.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to update seller: $e', error: e);
     }
@@ -147,7 +147,7 @@ class SellerService {
   Future<SellerStatistics> getSellerStatistics(int sellerId) async {
     try {
       final response = await _client.get('/sellers/$sellerId/statistics');
-      return SellerStatistics.fromJson(response.data);
+      return SellerStatistics.fromJson(response.data as Map<String, dynamic>);
     } catch (e) {
       throw SellerException('Failed to get seller statistics: $e', error: e);
     }
