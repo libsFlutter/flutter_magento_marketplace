@@ -330,7 +330,7 @@ class SellerCardCompact extends StatelessWidget {
                         RatingStars(rating: seller.rating, size: 14),
                         const SizedBox(width: 4),
                         Text(
-                          '${seller.rating.toStringAsFixed(1)}',
+                          seller.rating.toStringAsFixed(1),
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
