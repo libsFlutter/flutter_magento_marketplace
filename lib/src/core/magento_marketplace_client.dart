@@ -195,7 +195,10 @@ class MagentoMarketplaceClient {
           );
       }
     }
-    return MarketplaceTimeoutException('Unexpected error: $error', error: error);
+    return MarketplaceTimeoutException(
+      'Unexpected error: $error',
+      error: error,
+    );
   }
 
   /// Handle HTTP response errors
@@ -269,7 +272,10 @@ class _LoggingInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
+  void onResponse(
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
     if (_enabled) {
       print(
         '✅ Marketplace API Response: ${response.statusCode} ${response.requestOptions.uri}',
@@ -301,4 +307,3 @@ class _ErrorInterceptor extends Interceptor {
     handler.next(err);
   }
 }
-

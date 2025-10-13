@@ -210,4 +210,3 @@ class SellerVerificationStatus {
   static const String verified = 'verified';
   static const String rejected = 'rejected';
 }
-
