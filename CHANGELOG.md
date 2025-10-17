@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-10-17
+
+### Deprecated
+- **ENTIRE PACKAGE DEPRECATED**: This package has been merged into the main `flutter_magento` package.
+- All functionality is now available in `flutter_magento` version 3.6.0 and higher.
+- Please migrate to using `flutter_magento` directly.
+- This package will no longer receive updates or bug fixes.
+
+### Migration
+- Replace `import 'package:flutter_magento_marketplace/flutter_magento_marketplace.dart';` with `import 'package:flutter_magento/flutter_magento.dart';`
+- All classes, widgets, and functionality remain exactly the same
+- Update your `pubspec.yaml` to use `flutter_magento: ^3.6.0` instead
+
 ## [1.1.0] - 2025-10-13
 
 ### Changed

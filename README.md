@@ -1,8 +1,18 @@
 # Flutter Magento Marketplace Library
 
+> **⚠️ DEPRECATED**: This package has been integrated into the main `flutter_magento` package as of version 3.6.0. Please migrate to using `flutter_magento` directly. This package will no longer receive updates.
+>
+> **Migration Guide**: All marketplace functionality is now available under `package:flutter_magento/flutter_magento.dart`. Simply replace your imports and the code will work the same way.
+
 [![Latest Stable Version](https://poser.pugx.org/nativemind/flutter_magento_marketplace/v/stable)](https://pub.dev/packages/flutter_magento_marketplace)
 [![License](https://poser.pugx.org/nativemind/flutter_magento_marketplace/license)](https://pub.dev/packages/flutter_magento_marketplace)
 [![Total Downloads](https://poser.pugx.org/nativemind/flutter_magento_marketplace/downloads)](https://pub.dev/packages/flutter_magento_marketplace)
+
+**🚨 THIS PACKAGE IS DEPRECATED 🚨**
+
+This package has been merged into the main `flutter_magento` package. Please use `flutter_magento` version 3.6.0 or higher instead.
+
+---
 
 A comprehensive Flutter library for Magento 2 Marketplace functionality with multi-seller support, subdomains, ratings, messaging, and more. Built on top of the core `flutter_magento` library to provide seamless marketplace features.
 
@@ -47,11 +57,13 @@ A comprehensive Flutter library for Magento 2 Marketplace functionality with mul
 
 ## 📦 Installation
 
-Add this to your package's `pubspec.yaml` file:
+**⚠️ DO NOT USE THIS PACKAGE - IT IS DEPRECATED**
+
+Instead, use the main `flutter_magento` package:
 
 ```yaml
 dependencies:
-  flutter_magento_marketplace: ^1.0.0
+  flutter_magento: ^3.6.0
 ```
 
 Then run:
@@ -59,6 +71,20 @@ Then run:
 ```bash
 flutter pub get
 ```
+
+## 🔄 Migration Guide
+
+### Old import (deprecated):
+```dart
+import 'package:flutter_magento_marketplace/flutter_magento_marketplace.dart';
+```
+
+### New import:
+```dart
+import 'package:flutter_magento/flutter_magento.dart';
+```
+
+All marketplace classes, widgets, and functionality remain exactly the same. Only the import needs to be updated.
 
 ## 🔧 Setup
 

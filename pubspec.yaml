@@ -1,7 +1,8 @@
 name: flutter_magento_marketplace
-description: Flutter library for Magento 2 Marketplace functionality with multi-seller support, subdomains, ratings, and messaging
-version: 1.1.0
+description: "DEPRECATED: This package has been merged into flutter_magento. Use flutter_magento ^3.6.0 instead. Flutter library for Magento 2 Marketplace functionality with multi-seller support, subdomains, ratings, and messaging"
+version: 1.2.0
 homepage: https://github.com/nativemind/flutter_magento_marketplace
+deprecated: true
 
 environment:
   sdk: '>=3.8.0 <4.0.0'

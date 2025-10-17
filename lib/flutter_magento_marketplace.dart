@@ -1,14 +1,24 @@
 /**
  * Flutter Magento Marketplace Library
  * 
- * A comprehensive Flutter library for Magento 2 Marketplace functionality
- * with multi-seller support, subdomains, ratings, messaging, and more.
+ * ⚠️ DEPRECATED: This package has been merged into the main flutter_magento package.
+ * Please use flutter_magento ^3.6.0 instead.
  * 
+ * Migration:
+ * - Replace: import 'package:flutter_magento_marketplace/flutter_magento_marketplace.dart';
+ * - With:    import 'package:flutter_magento/flutter_magento.dart';
+ * 
+ * All functionality remains exactly the same, only the import changes.
+ * 
+ * @deprecated Use flutter_magento ^3.6.0 instead
  * @author NativeMind <contact@nativemind.net>
- * @version 1.0.0
+ * @version 1.2.0
  * @license MIT
  */
 
+@Deprecated(
+  'Use flutter_magento ^3.6.0 instead. This package has been merged into flutter_magento.',
+)
 library flutter_magento_marketplace;
 
 // Core exports
